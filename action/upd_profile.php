@@ -49,11 +49,11 @@
             			header("location: ../dashboard.php?success_pass=$success_pass");
 					}
 				}else{
-					$invalid=sha1(md5("la contrasena no coincide la contraseña con la anterior"));
+					$invalid=sha1(md5("la contrasena no coincide con la anterior"));
             		header("location: ../dashboard.php?invalid=$invalid");
 				}
 			}else{
-				$error=sha1(md5("las nuevas  contraseñas no coinciden"));
+				$error=sha1(md5("las nuevas contrasenas no coinciden"));
             	header("location: ../dashboard.php?error=$error");
 			}
 		}

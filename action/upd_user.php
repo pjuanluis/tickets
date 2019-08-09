@@ -32,7 +32,7 @@
 				if($_POST["password"]!=""){
 					$update_passwd=mysqli_query($con,"update user set password=\"$password\" where id=$id");
 					if ($update_passwd) {
-						$messages[] = " Y la Contraseña ah sido actualizada.";
+						$messages[] = " Y la Contraseña ha sido actualizada.";
 					}
 				}
 

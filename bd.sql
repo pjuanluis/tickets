@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-08-2019 a las 10:30:41
+-- Tiempo de generación: 09-08-2019 a las 14:27:00
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.29
 
@@ -170,8 +170,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `name`, `email`, `password`, `profile_pic`, `is_active`, `kind`, `created_at`) VALUES
-(1, 'admin', 'Juan Luis Perez', 'pjuanluis97@gmail.com', '8836cb229430b11c42135a898bd8c6e0', 'mrobot.jpg', 1, 1, '2019-08-09 00:00:00'),
-(2, 'usertest', 'Usuario comun', 'test@solticss.mx', '098f6bcd4621d373cade4e832627b4f6', 'default.png', 1, 2, '2019-08-09 00:00:00');
+(1, 'admin', 'Juan Luis Perez', 'pjuanluis97@gmail.com', '36b3caecabe51cedf773bfcb074a21089a533f96', 'mrobot.jpg', 1, 1, '2019-08-09 00:00:00'),
+(2, 'usertest', 'Usuario comun', 'test@solticss.mx', '4028a0e356acc947fcd2bfbf00cef11e128d484a', 'default.png', 1, 2, '2019-08-09 00:00:00');
 
 --
 -- Índices para tablas volcadas

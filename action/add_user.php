@@ -27,14 +27,13 @@
 		$password=mysqli_real_escape_string($con,(strip_tags(sha1(md5($_POST["password"])),ENT_QUOTES)));
 		$status=intval($_POST['status']);
 		$end_name=$name." ".$lastname;
-		$created_at=date("Y-m-d H:i:s");
 		$user_id=$_SESSION['user_id'];
 		$profile_pic="default.png";
 
 		$is_admin=0;
 		if(isset($_POST["is_admin"])){$is_admin=1;}
 
-			$sql="INSERT INTO user ( name, password, email, profile_pic, is_active, created_at) VALUES ('$end_name','$password','$email','$profile_pic',$status,'$created_at')";
+			$sql="INSERT INTO user ( name, password, email, profile_pic, is_active) VALUES ('$end_name','$password','$email','$profile_pic', $status)";
 			$query_new_insert = mysqli_query($con,$sql);
 				if ($query_new_insert){
 					$messages[] = "El usuario ha sido ingresado satisfactoriamente.";
