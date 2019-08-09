@@ -16,7 +16,7 @@
                             <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input name="mod_email" id="mod_email" type="text" class="form-control has-feedback-left" required>
+                            <input name="mod_email" id="mod_email" type="email" class="form-control has-feedback-left" required>
                             <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">

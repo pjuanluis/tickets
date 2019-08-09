@@ -21,7 +21,7 @@
                             <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input name="email" type="text" class="form-control has-feedback-left" placeholder="Correo Electronico" required>
+                            <input name="email" type="email" class="form-control has-feedback-left" placeholder="Correo Electronico" required>
                             <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">

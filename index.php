@@ -50,7 +50,7 @@
                         <form action="action/login.php" method="post">
                             <h1>Iniciar Sesión</h1>
                             <div>
-                                <input type="text" name="email" class="form-control" placeholder="Correo Electrónico" required />
+                                <input type="email" name="email" class="form-control" placeholder="Correo Electrónico" required />
                             </div>
                             <div>
                                 <input type="password" name="password" class="form-control" placeholder="Contraseña" required/>
