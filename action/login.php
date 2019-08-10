@@ -15,6 +15,7 @@
 			
 
 				$_SESSION['user_id'] = $row['id'];
+				$_SESSION['kind'] = $row['kind'];
 				header("location: ../dashboard.php");
 				
 

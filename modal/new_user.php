@@ -25,10 +25,13 @@
                             <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <select class="form-control" required name="status">
-                                    <option value="" selected>-- Selecciona estado --</option>
-                                    <option value="1" >Activo</option>
-                                    <option value="0" >Inactivo</option>  
+                            <select class="form-control" required name="rol">
+                                    <option value="" selected>-- Selecciona Rol --</option>
+									<?php if ($kind_user == 1): ?>
+                                    <option value="1" >Admin</option>
+                                    <option value="3" >Técnico</option>
+									<?php endif; ?>
+									<option value="2" >Usuario</option> 									
                             </select>
                         </div>
                         <div class="form-group">

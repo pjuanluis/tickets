@@ -68,9 +68,9 @@
                     <tr class="headings">
                         <th class="column-title">Asunto </th>
                         <th class="column-title">Proyecto </th>
-                        <th class="column-title">Prioridad </th>
-                        <th class="column-title">Estado </th>
+                        <th class="column-title">Prioridad </th>                        
                         <th>Fecha</th>
+						<th class="column-title">Estado </th>						
                         <th class="column-title no-link last"><span class="nobr"></span></th>
                     </tr>
                 </thead>
@@ -119,9 +119,23 @@
                     <tr class="even pointer">
                         <td><?php echo $title;?></td>
                         <td><?php echo $name_project; ?></td>
-                        <td><?php echo $name_priority; ?></td>
-                        <td><?php echo $name_status;?></td>
+                        <td><?php echo $name_priority; ?></td>                        
                         <td><?php echo $created_at;?></td>
+						<td>
+							<?php echo $name_status;?>
+							<?php if ($status_id == 1): ?>							
+								<button class="btn btn-danger disabled"></button>
+							<?php endif; ?>
+							<?php if ($status_id == 2): ?>							
+								<button class="btn btn-warning disabled"></button>
+							<?php endif; ?>	
+							<?php if ($status_id == 3): ?>							
+								<button class="btn btn-success disabled"></button>
+							<?php endif; ?>	
+							<?php if ($status_id == 4): ?>							
+								<button class="btn btn-basic disabled"></button>
+							<?php endif; ?>	
+						</td>
                         <td ><span class="pull-right">
                         <a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-udp"><i class="glyphicon glyphicon-edit"></i></a> 
                         <a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>

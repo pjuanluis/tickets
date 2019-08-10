@@ -3,6 +3,7 @@
     include "../config/config.php";//Contiene funcion que conecta a la base de datos
     
     $action = (isset($_REQUEST['action']) && $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
+	$kind=$_SESSION['kind'];
     if (isset($_GET['id'])){
         $id_expence=intval($_GET['id']);
         $query=mysqli_query($con, "SELECT * from user where id='".$id_expence."'");
@@ -92,9 +93,11 @@
                         <td><?php echo $email;?></td>
                         <td ><?php echo $status_f; ?></td>
                         <td><?php echo $created_at;?></td>
-                        <td ><span class="pull-right">
+                        <td ><span class="pull-right">					
+						<?php if ($kind == 1): ?>
                         <a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-upd"><i class="glyphicon glyphicon-edit"></i></a> 
                         <a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+						<?php endif; ?>
                     </tr>
                 <?php
                     } //end while

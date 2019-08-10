@@ -80,6 +80,8 @@
                                 </select>
                             </div>
                         </div>
+						
+						<?php if ($kind_user == 1): ?>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Estado
                             </label>
@@ -92,6 +94,8 @@
                                 </select>
                             </div>
                         </div>
+						<?php endif; ?>
+						
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">

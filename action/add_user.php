@@ -7,14 +7,14 @@
 			$errors[] = "Apellidos vacío";
 		}else if (empty($_POST['email'])){
 			$errors[] = "Correo Vacio vacío";
-		} else if ($_POST['status']==""){
+		} else if ($_POST['rol']==""){
 			$errors[] = "Selecciona el estado";
 		} else if (empty($_POST['password'])){
 			$errors[] = "Contraseña vacío";
 		} else if (
 			!empty($_POST['name']) &&
 			!empty($_POST['lastname']) &&
-			$_POST['status']!="" &&
+			$_POST['rol']!="" &&
 			!empty($_POST['password'])
 		){
 
@@ -25,15 +25,16 @@
 		$lastname=mysqli_real_escape_string($con,(strip_tags($_POST["lastname"],ENT_QUOTES)));
 		$email=$_POST["email"];
 		$password=mysqli_real_escape_string($con,(strip_tags(sha1(md5($_POST["password"])),ENT_QUOTES)));
-		$status=intval($_POST['status']);
+		$rol=intval($_POST['rol']);
 		$end_name=$name." ".$lastname;
 		$user_id=$_SESSION['user_id'];
 		$profile_pic="default.png";
-
+		
+		
 		$is_admin=0;
 		if(isset($_POST["is_admin"])){$is_admin=1;}
 
-			$sql="INSERT INTO user ( name, password, email, profile_pic, is_active) VALUES ('$end_name','$password','$email','$profile_pic', $status)";
+			$sql="INSERT INTO user ( name, password, email, profile_pic, kind) VALUES ('$end_name','$password','$email','$profile_pic', $rol)";
 			$query_new_insert = mysqli_query($con,$sql);
 				if ($query_new_insert){
 					$messages[] = "El usuario ha sido ingresado satisfactoriamente.";
