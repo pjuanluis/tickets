@@ -33,7 +33,7 @@
                                     <input type="text" class="form-control" id="q" placeholder="Nombre del ticket" onkeyup='load(1);'>
                                 </div>
                                 <div class="col-md-3">
-                                    <button type="button" class="btn btn-default" onclick='load(1);'>
+                                    <button type="button" class="btn btn-default" onclick='load(1);' id="btn-tickets">
                                         <span class="glyphicon glyphicon-search" ></span> Buscar</button>
                                     <span id="loader"></span>
                                 </div>
@@ -94,9 +94,12 @@ $( "#upd" ).submit(function( event ) {
                 $("#result2").html("Mensaje: Cargando...");
               },
             success: function(datos){
-            $("#result2").html(datos);
-            $('#upd_data').attr("disabled", false);
-            load(1);
+                $("#result2").html(datos);
+                $('#upd_data').attr("disabled", false);
+                load(1);
+                setTimeout(function(){
+                     $(".alert-success").remove();
+                }, 3000);
           }
     });
   event.preventDefault();

@@ -1,29 +1,26 @@
 <?php	
 
-	//upd user by abisoft https://github.com/amnersaucedososa
+	
 	session_start();
 
 	if (empty($_POST['mod_name'])) {
            $errors[] = "Nombre vacío";
         }else if (empty($_POST['mod_email'])){
 			$errors[] = "Correo Vacio vacío";
-		} else if ($_POST['mod_status']==""){
-			$errors[] = "Selecciona el estado";
-		}else if (
-			!empty($_POST['mod_name']) &&
-			!empty($_POST['mod_email']) &&
-			$_POST['mod_status']!=""
-		){
+		} else if (!empty($_POST['mod_name']) && !empty($_POST['mod_email'])){
 
 		include "../config/config.php";//Contiene funcion que conecta a la base de datos
 
 		$name=mysqli_real_escape_string($con,(strip_tags($_POST["mod_name"],ENT_QUOTES)));
 		$email=$_POST["mod_email"];
 		$password=mysqli_real_escape_string($con,(strip_tags(sha1(md5($_POST["password"])),ENT_QUOTES)));
-		$status=intval($_POST['mod_status']);
 		$id=$_POST['mod_id'];
-
-		$sql="UPDATE user SET name=\"$name\", email=\"$email\",is_active=$status  WHERE id=$id";
+		$sql="UPDATE user SET name=\"$name\", email=\"$email\" WHERE id = $id";
+		if ($_SESSION['kind'] == 1) {
+			$rol = $_POST['mod_status'];
+			$sql="UPDATE user SET name=\"$name\", email=\"$email\",kind=$rol WHERE id = $id";
+		}
+		
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Datos actualizados satisfactoriamente.";

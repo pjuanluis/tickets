@@ -1,5 +1,10 @@
 $(document).ready(function(){
 	load(1);
+
+	if($('#tickets').length == 0) {
+        $('#q').prop("disabled", true);
+        $('#btn-tickets').prop('disabled', true);
+    }
 });
 
 function load(page){

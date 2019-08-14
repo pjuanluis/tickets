@@ -1,14 +1,19 @@
 <?php
+    session_start();    
+    $id_kind = $_SESSION['kind'];
+?>
+<?php
 
     include "../config/config.php";//Contiene funcion que conecta a la base de datos
     
     $action = (isset($_REQUEST['action']) && $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 
+   
     if (isset($_GET['id'])){
         $id_expence=intval($_GET['id']);
-        $query=mysqli_query($con, "SELECT * from user where id='".$id_expence."'");
+        $query=mysqli_query($con, "SELECT * from user where id='".$id_expence."'");        
         $count=mysqli_num_rows($query);
-            if ($delete1=mysqli_query($con,"DELETE FROM user WHERE id='".$id_expence."'")){
+        if ($delete1=mysqli_query($con,"DELETE FROM user WHERE id='".$id_expence."'")){
             ?>
             <div class="alert alert-success alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -19,7 +24,7 @@
             ?>
             <div class="alert alert-danger alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <strong>Error!</strong> Lo siento algo ha salido mal intenta nuevamente.
+              <strong>Error!</strong> Lo sentimos algo ha salido mal intenta nuevamente.
             </div>
 <?php
         } //end else
@@ -83,20 +88,24 @@
                             $name=$r['name'];
                             $email=$r['email'];
                             $created_at=date('d/m/Y', strtotime($r['created_at']));
+                            $kind = $r['kind'];
                 ?>
                     <input type="hidden" value="<?php echo $name;?>" id="name<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $email;?>" id="email<?php echo $id;?>">
-                     <input type="hidden" value="<?php echo $status;?>" id="status<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $kind;?>" id="kind<?php echo $id;?>">
 
                     <tr class="even pointer">
                         <td><?php echo $name;?></td>
                         <td><?php echo $email;?></td>
                         <td ><?php echo $status_f; ?></td>
                         <td><?php echo $created_at;?></td>
-                        <td ><span class="pull-right">				
-						
-                        <a href="#" class='btn btn-default' title='Editar' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-upd"><i class="glyphicon glyphicon-edit"></i></a> 
-                        <a href="#" class='btn btn-default' title='Borrar' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span>
+                        <td>
+                            <?php if (($kind == 2 && $id_kind == 3) || ($id_kind == 1)): ?>
+                            <span class="pull-right">
+                                <a href="#" class='btn btn-default' title='Editar' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-upd"><i class="glyphicon glyphicon-edit"></i></a> 
+                                <a href="#" class='btn btn-default' title='Borrar' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+                            </span>
+                            <?php endif; ?>
                         </td>
 					
                     </tr>

@@ -9,7 +9,7 @@
                         <a href="tickets.php"><i class="fa fa-ticket"></i> Tickets</a>
                     </li>
 
-                    <?php if ($kind_user == 1): ?>
+                    <?php if ($kind == 1): ?>
 
                     <li class="<?php if(isset($active3)){echo $active3;}?>">
                         <a href="projects.php"><i class="fa fa-list-alt"></i> Proyectos</a>
@@ -29,7 +29,7 @@
 
                     <?php endif; ?>
 				
-					<?php if ($kind_user == 3): ?>
+					<?php if ($kind == 3): ?>
 					<li class="<?php if(isset($active6)){echo $active6;}?>">
                         <a href="users.php"><i class="fa fa-users"></i> Usuarios</a>
                     </li>

@@ -39,15 +39,7 @@
         <script src="js/jszip/dist/jszip.min.js"></script>
         <script src="js/pdfmake/build/pdfmake.min.js"></script>
         <script src="js/pdfmake/build/vfs_fonts.js"></script>
-
-        <!-- Custom Theme Scripts -->
         <script src="js/custom.min.js"></script>
-
-
-
-            <!-- DateJS -->
-        <!-- <script src="js/DateJS/build/date.js"></script> -->
-        <!-- bootstrap-daterangepicker -->
         <script src="js/moment/min/moment.min.js"></script>
         <script src="css/bootstrap-daterangepicker/daterangepicker.js"></script>
 

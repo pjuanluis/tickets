@@ -71,9 +71,9 @@ $( "#add_user" ).submit(function( event ) {
                 $("#result_user").html("Mensaje: Cargando...");
               },
             success: function(datos){
-            $("#result_user").html(datos);
-            $('#save_data').attr("disabled", false);
-            load(1);
+                $("#result_user").html(datos);
+                $('#save_data').attr("disabled", false);
+                load(1);
           }
     });
   event.preventDefault();
@@ -93,9 +93,12 @@ $( "#upd_user" ).submit(function( event ) {
                 $("#result_user2").html("Mensaje: Cargando...");
               },
             success: function(datos){
-            $("#result_user2").html(datos);
-            $('#upd_data').attr("disabled", false);
-            load(1);
+                $("#result_user2").html(datos);
+                $('#upd_data').attr("disabled", false);
+                load(1);
+                setTimeout(function(){
+                     $(".alert-success").remove();
+                }, 3000);         
           }
     });
   event.preventDefault();
@@ -104,7 +107,7 @@ $( "#upd_user" ).submit(function( event ) {
     function obtener_datos(id){
             var name = $("#name"+id).val();
             var email = $("#email"+id).val();
-            var status = $("#status"+id).val();
+            var status = $("#kind"+id).val();
             $("#mod_id").val(id);
             $("#mod_name").val(name);
             $("#mod_email").val(email);

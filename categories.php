@@ -95,9 +95,12 @@ $( "#upd" ).submit(function( event ) {
                 $("#result2").html("Mensaje: Cargando...");
               },
             success: function(datos){
-            $("#result2").html(datos);
-            $('#upd_data').attr("disabled", false);
-            load(1);
+                $("#result2").html(datos);
+                $('#upd_data').attr("disabled", false);
+                load(1);
+                setTimeout(function(){
+                     $(".alert-success").remove();
+                }, 3000);
           }
     });
   event.preventDefault();

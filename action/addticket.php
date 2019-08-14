@@ -19,17 +19,35 @@
 		$project_id = $_POST["project_id"];
 		$priority_id = $_POST["priority_id"];
 		$user_id = $_SESSION["user_id"];
-		$status_id = $_POST["status_id"];
 		$kind_id = $_POST["kind_id"];
 		$created_at="NOW()";
 
 		// $user_id=$_SESSION['user_id'];
 
-		$sql="insert into ticket (title,description,category_id,project_id,priority_id,user_id,status_id,kind_id,created_at) value (\"$title\",\"$description\",\"$category_id\",\"$project_id\",$priority_id,$user_id,$status_id,$kind_id,$created_at)";
+		$sql="insert into ticket (title,description,category_id,project_id,priority_id,user_id,kind_id,created_at) value (\"$title\",\"$description\",\"$category_id\",\"$project_id\",$priority_id,$user_id,$kind_id,$created_at)";
 
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
-				$messages[] = "Tu ticket ha sido ingresado satisfactoriamente.";
+				$messages[] = "Tu ticket ha sido registrado satisfactoriamente.";
+				$prioridad = '';
+
+				if ($priority_id == 1) {
+					$prioridad = 'Alta';
+				}
+				elseif ($project_id == 2) {
+					$prioridad = 'Media';
+				} else {
+					$prioridad = 'Baja';
+				}
+
+				$para = 'pjuanluis97@gmail.com';
+				$asunto = 'Se ha creado un nuevo ticket con prioridad '.$prioridad;
+				$nombre = $_SESSION['name'];
+				$email = $_SESSION['email'];
+				$mensaje = $description;
+				$cuerpo = "Enviado por: ".$nombre."\n"."Email: ".$email."\n"."Descripción del problema: "."\n".$mensaje;
+				//mail($para, $asunto, $cuerpo, "");
+
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}

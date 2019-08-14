@@ -132,9 +132,9 @@
                                             $sql .= " and ";
                                         }
 
-                                            $sql .= " ( date_at >= \"".$_GET["start_at"]."\" and date_at <= \"".$_GET["finish_at"]."\" ) ";
+                                            $sql .= " ( created_at >= \"".$_GET["start_at"]."\" and created_at <= \"".$_GET["finish_at"]."\" ) ";
                                         }
-
+                                                
                                                 $users = mysqli_query($con, $sql);
 
                                         }else{

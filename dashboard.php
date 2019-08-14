@@ -4,6 +4,10 @@
     include "sidebar.php";
 
     $TicketData=mysqli_query($con, "select * from ticket where status_id=1");
+
+    if ($_SESSION['kind'] == 2) {
+        $TicketData = mysqli_query($con, "select * from ticket where status_id = 1 and user_id = ".$_SESSION['user_id']);
+    }    
     $ProjectData=mysqli_query($con, "select * from project");
     $CategoryData=mysqli_query($con, "select * from category");
     $UserData=mysqli_query($con, "select * from user order by created_at desc");
@@ -99,21 +103,21 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Contraseña antigua
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="birthday" name="password" class="date-picker form-control col-md-7 col-xs-12" type="text" placeholder="**********">
+                                            <input id="birthday" name="password" class="date-picker form-control col-md-7 col-xs-12" type="password" placeholder="**********">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Nueva contraseña 
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="birthday" name="new_password" class="date-picker form-control col-md-7 col-xs-12" type="text">
+                                            <input id="birthday" name="new_password" class="date-picker form-control col-md-7 col-xs-12" type="password">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Confirmar contraseña nueva
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="birthday" name="confirm_new_password" class="date-picker form-control col-md-7 col-xs-12" type="text">
+                                      <input id="birthday" name="confirm_new_password" class="date-picker form-control col-md-7 col-xs-12" type="password">
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
