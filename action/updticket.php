@@ -45,13 +45,17 @@
 					} else {
 						$estatus = 'Cancelado';
 					}
+
+					$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+					$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 					$usuario = mysqli_query($con, "select user_id from ticket where id = ".$id);
 					$user = mysqli_fetch_array($usuario);
 					$para = mysqli_query($con, "select email from user where id = ".$user['user_id']);
 					$to = mysqli_fetch_array($para);
 					$asunto = 'Se ha actualizado el estatus de su ticket';
-					$cuerpo = 'Se ha actualizado el estatus de su ticket a <strong>'.$estatus.'</strong>';
-					//mail($to, $asunto, $cuerpo, "");
+					$html = file_get_contents('mail_upd.php');
+					str_replace(".$estatus.", $estatus, $html);
+					mail($to, $asunto, $html, $cabeceras);
 					
 				} else {
 					$prioridad = '';
@@ -63,16 +67,19 @@
 						$prioridad = 'Media';
 					} else {
 						$prioridad = 'Baja';
-					}	
+					}
+					$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+					$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 					$para = 'pjuanluis97@gmail.com';
 					$asunto = 'Se ha actualizado un ticket';
 					$nombre = $_SESSION['name'];
 					$email = $_SESSION['email'];
 					$mensaje = $description;
-					$cuerpo = "Enviado por: ".$nombre."\n"."Email: ".$email."\n"."Descripción del problema: "."\n".$mensaje."\n"."Prioridad: ".$prioridad;
-					
-					//mail($para, $asunto, $cuerpo, "");
+					$cuerpo = file_get_contents('mail_upd_usr.php');
+					str_replace(".$descripcion.", $description, $cuerpo);
+					str_replace(".$prioridad.", $prioridad, $cuerpo);
+					mail($para, $asunto, $cuerpo, $cabeceras);
 				}
 
 

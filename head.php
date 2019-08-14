@@ -52,7 +52,6 @@
 
         <!-- Custom Theme Style -->
         <link href="css/custom.min.css" rel="stylesheet">
-
         <!-- MICSS button[type="file"] -->
         <link rel="stylesheet" href="css/micss.css">
 

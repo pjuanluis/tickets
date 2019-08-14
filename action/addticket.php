@@ -39,14 +39,18 @@
 				} else {
 					$prioridad = 'Baja';
 				}
+				$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+				$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 				$para = 'pjuanluis97@gmail.com';
 				$asunto = 'Se ha creado un nuevo ticket con prioridad '.$prioridad;
 				$nombre = $_SESSION['name'];
 				$email = $_SESSION['email'];
 				$mensaje = $description;
-				$cuerpo = "Enviado por: ".$nombre."\n"."Email: ".$email."\n"."Descripción del problema: "."\n".$mensaje;
-				//mail($para, $asunto, $cuerpo, "");
+				$cuerpo = file_get_contents('mail_new.php');
+				str_replace(".$descripcion.", $description, $cuerpo);
+				str_replace(".$prioridad.", $prioridad, $cuerpo);
+				mail($para, $asunto, $cuerpo, $cabeceras);
 
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
