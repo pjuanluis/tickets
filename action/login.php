@@ -18,6 +18,7 @@
 				$_SESSION['kind'] = $row['kind'];
 				$_SESSION['name'] = $row['name'];
 				$_SESSION['email'] = $row['email'];
+				$_SESSION['empresa'] = $row['empresa'];
 				
 				header("location: ../dashboard.php");
 				

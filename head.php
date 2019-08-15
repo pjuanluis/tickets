@@ -8,6 +8,7 @@
 <?php 
     $id=$_SESSION['user_id'];
 	$kind=$_SESSION['kind'];
+    $empresa=$_SESSION['empresa'];
     $query=mysqli_query($con,"SELECT * from user where id=$id");
     while ($row=mysqli_fetch_array($query)) {
         $username = $row['username'];

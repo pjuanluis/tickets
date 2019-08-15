@@ -29,12 +29,12 @@
 		$end_name=$name." ".$lastname;
 		$user_id=$_SESSION['user_id'];
 		$profile_pic="default.png";
-		
+		$empresa=$_POST["empresa"];
 		
 		$is_admin=0;
 		if(isset($_POST["is_admin"])){$is_admin=1;}
 
-			$sql="INSERT INTO user ( name, password, email, profile_pic, kind) VALUES ('$end_name','$password','$email','$profile_pic', $rol)";
+			$sql="INSERT INTO user ( name, password, email, profile_pic, kind, empresa) VALUES ('$end_name','$password','$email','$profile_pic', $rol, $empresa)";
 			$query_new_insert = mysqli_query($con,$sql);
 				if ($query_new_insert){
 					$messages[] = "El usuario ha sido ingresado satisfactoriamente.";

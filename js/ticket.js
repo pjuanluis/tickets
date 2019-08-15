@@ -12,11 +12,7 @@ function load(page){
 		},
 		success:function(data){
 			$(".outer_div").html(data).fadeIn('slow');
-			$('#loader').html('');
-			if($('#tickets').length == 0) {
-                    $('#q').prop("disabled", true);
-                    $('#btn-tickets').prop('disabled', true);
-            }  
+			$('#loader').html(''); 
 		}
 	})
 }

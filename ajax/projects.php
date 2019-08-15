@@ -64,7 +64,7 @@
                 <thead>
                     <tr class="headings">
                         <th class="column-title">Nombre </th>
-                        <th class="column-title">Descripción </th>
+                        <th class="column-title">Razón Social </th>
                         <th class="column-title no-link last"><span class="nobr"></span></th>
                     </tr>
                 </thead>

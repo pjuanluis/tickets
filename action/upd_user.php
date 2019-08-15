@@ -13,12 +13,13 @@
 
 		$name=mysqli_real_escape_string($con,(strip_tags($_POST["mod_name"],ENT_QUOTES)));
 		$email=$_POST["mod_email"];
+		$empresa=$_POST["mod_empresa"];
 		$password=mysqli_real_escape_string($con,(strip_tags(sha1(md5($_POST["password"])),ENT_QUOTES)));
 		$id=$_POST['mod_id'];
-		$sql="UPDATE user SET name=\"$name\", email=\"$email\" WHERE id = $id";
+		$sql="UPDATE user SET name=\"$name\", email=\"$email\", empresa=$empresa WHERE id = $id";
 		if ($_SESSION['kind'] == 1) {
 			$rol = $_POST['mod_status'];
-			$sql="UPDATE user SET name=\"$name\", email=\"$email\",kind=$rol WHERE id = $id";
+			$sql="UPDATE user SET name=\"$name\", email=\"$email\",kind=$rol, empresa=$empresa WHERE id = $id";
 		}
 		
 		$query_update = mysqli_query($con,$sql);

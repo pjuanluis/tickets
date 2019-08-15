@@ -72,6 +72,7 @@
                 <thead>
                     <tr class="headings">
                         <th class="column-title">Nombre </th>
+                        <th class="column-title">Empresa </th>
                         <th class="column-title">Correo Electrónico </th>
                         <th class="column-title">Estado </th>
                         <th class="column-title">Fecha </th>
@@ -89,13 +90,21 @@
                             $email=$r['email'];
                             $created_at=date('d/m/Y', strtotime($r['created_at']));
                             $kind = $r['kind'];
+                            $empresa = $r['empresa'];
+
+                            $sql = mysqli_query($con, "select * from project where id=$empresa");
+                            if($c=mysqli_fetch_array($sql)) {
+                                $emp=$c['name'];
+                            }
                 ?>
                     <input type="hidden" value="<?php echo $name;?>" id="name<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $email;?>" id="email<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $kind;?>" id="kind<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $empresa;?>" id="empresa<?php echo $id;?>">
 
                     <tr class="even pointer">
                         <td><?php echo $name;?></td>
+                        <td><?php echo $emp;?></td>
                         <td><?php echo $email;?></td>
                         <td ><?php echo $status_f; ?></td>
                         <td><?php echo $created_at;?></td>

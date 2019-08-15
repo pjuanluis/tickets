@@ -5,7 +5,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel"> Editar Proyecto</h4>
+                    <h4 class="modal-title" id="myModalLabel"> Editar Empresa</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal form-label-left input_mask" method="post" id="upd" name="upd">
@@ -18,7 +18,7 @@
                           </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Razón Social <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <textarea name="mod_description" id="mod_description" class="date-picker form-control col-md-7 col-xs-12" required placeholder="Descripción"></textarea>

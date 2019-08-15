@@ -1,3 +1,8 @@
+<?php
+
+    $ProjectData = mysqli_query($con, "select * from project");
+?>
+
     <div> <!-- Modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-add"><i class="fa fa-plus-circle"></i> Agregar Usuario</button>
     </div>
@@ -34,11 +39,18 @@
                                 <option value="2" >Usuario</option> 									
                             </select>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <select class="form-control" required name="empresa">
+                                <option value="" selected>-- Selecciona Empresa --</option>
+                                <?php foreach($ProjectData as $p):?>
+                                    <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                <?php endforeach; ?>                                
+                            </select>
+                        </div>
                         <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="password">Contraseña<span class="required">*</span>
-                            </label>
-                            <div class="col-md-10 col-sm-10 col-xs-12">
-                                <input type="password" id="password" name="password" required class="form-control col-md-7 col-xs-12">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="password" id="password" name="password" class="form-control col-md-6 col-xs-12" placeholder="Password *" maxlength="25" required>
+                                <span class="fa fa-lock form-control-feedback right" aria-hidden="true"></span>
                             </div>
                         </div>                    
                     </div>

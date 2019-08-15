@@ -76,10 +76,11 @@ $user_id = $_SESSION['user_id'];
                 <thead>
                     <tr class="headings">
                         <th class="column-title">Asunto </th>
-                        <th class="column-title">Proyecto </th>
+                        <th class="column-title">Empresa </th>
                         <th class="column-title">Prioridad </th>                        
                         <th>Fecha</th>
-                        <th class="column-title">Estado </th>						
+                        <th class="column-title">Estado </th>
+                        <th class="column-title">Atendido Por</th>						
                         <th class="column-title no-link last"><span class="nobr"></span></th>
                     </tr>
                 </thead>
@@ -95,6 +96,7 @@ $user_id = $_SESSION['user_id'];
                         $status_id=$r['status_id'];
                         $kind_id=$r['kind_id'];
                         $category_id=$r['category_id'];
+                        $atendido_por=$r['atendido_por'];
 
                         $sql = mysqli_query($con, "select * from project where id=$project_id");
                         if($c=mysqli_fetch_array($sql)) {
@@ -111,6 +113,14 @@ $user_id = $_SESSION['user_id'];
                             $name_status=$c['name'];
                         }
 
+                        if ($atendido_por != null && !empty($atendido_por)) {
+                            $sql = mysqli_query($con, "select u.name from user u, ticket t where u.id=$atendido_por");
+                            if($c=mysqli_fetch_array($sql)) {
+                                $name_atention=$c['name'];
+                            }
+                        } else {
+                            $name_atention = '';
+                        }
 
                         ?>
                         <input type="hidden" value="<?php echo $id;?>" id="id<?php echo $id;?>">
@@ -145,6 +155,11 @@ $user_id = $_SESSION['user_id'];
                             <?php endif; ?>	
                         </td>
                         <td>
+                            <?php if ($name_atention != NULL): ?>
+                               <?php echo $name_atention;?>
+                            <?php endif; ?>
+                        </td>
+                        <td>
                             <?php if (($status_id == 1 && $id_kind == 2) || ($id_kind != 2)): ?>
                             <span class="pull-right">
                                 <a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-udp"><i class="glyphicon glyphicon-edit"></i></a> 
@@ -157,7 +172,7 @@ $user_id = $_SESSION['user_id'];
                     } //en while
                     ?>
                     <tr>
-                        <td colspan=6><span class="pull-right">
+                        <td colspan=7><span class="pull-right">
                             <?php echo paginate($reload, $page, $total_pages, $adjacents);?>
                         </span></td>
                     </tr>

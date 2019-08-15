@@ -12,7 +12,7 @@
                     <?php if ($kind == 1): ?>
 
                     <li class="<?php if(isset($active3)){echo $active3;}?>">
-                        <a href="projects.php"><i class="fa fa-list-alt"></i> Proyectos</a>
+                        <a href="projects.php"><i class="fa fa-list-alt"></i> Empresas</a>
                     </li>
 
                     <li class="<?php if(isset($active4)){echo $active4;}?>">

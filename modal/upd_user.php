@@ -1,4 +1,7 @@
+<?php
 
+    $ProjectData = mysqli_query($con, "select * from project");
+?>
 <div class="modal fade bs-example-modal-lg-upd" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -29,22 +32,34 @@
                                 <option value="2" >Usuario</option> 
                             </select>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <select class="form-control" required name="mod_empresa" id="mod_empresa">
+                                <option value="" selected>-- Selecciona Empresa --</option>
+                                <?php foreach($ProjectData as $p):?>
+                                    <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                <?php endforeach; ?>                                
+                            </select>
+                        </div>
                         <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="password">Contraseña<span class="required">*</span>
-                            </label>
-                            <div class="col-md-10 col-sm-1o col-xs-12">
-                                <input type="password" id="password" name="password" class="form-control col-md-7 col-xs-12">
+                            <div class="col-md-6 col-sm-1o col-xs-6">
+                                <input type="password" id="password" name="password" class="form-control col-md-6 col-xs-6" placeholder="Password">
                                 <p class="text-muted">La contraseña solo se modificara si escribes algo, en caso contrario no se modifica.</p>
                             </div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($kind_user == 3): ?>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <select class="form-control" required name="mod_empresa" id="mod_empresa">
+                                <option value="" selected>-- Selecciona Empresa --</option>
+                                <?php foreach($ProjectData as $p):?>
+                                    <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                <?php endforeach; ?>                                
+                            </select>
+                        </div>
                         <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="password">Contraseña<span class="required">*</span>
-                            </label>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <input type="password" id="password" name="password" class="form-control col-md-4 col-xs-12">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="password" id="password" name="password" class="form-control col-md-6 col-xs-12" placeholder="Password">
                                 <p class="text-muted">La contraseña solo se modificara si escribes algo, en caso contrario no se modifica.</p>
                             </div>
                         </div>

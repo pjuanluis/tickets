@@ -2,6 +2,7 @@
     $title ="Usuarios | ";
     include "head.php";
     include "sidebar.php";
+
 ?>  
     <div class="right_col" role="main"><!-- page content -->
         <div class="">
@@ -108,9 +109,11 @@ $( "#upd_user" ).submit(function( event ) {
             var name = $("#name"+id).val();
             var email = $("#email"+id).val();
             var status = $("#kind"+id).val();
+            var emp = $("#empresa"+id).val();
             $("#mod_id").val(id);
             $("#mod_name").val(name);
             $("#mod_email").val(email);
             $("#mod_status").val(status);
+            $("#mod_empresa").val(emp);
         }
 </script>

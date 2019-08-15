@@ -35,7 +35,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-male"></i></span>
                                     <select name="project_id" class="form-control">
-                                    <option value="">PROJECTO</option>
+                                    <option value="">EMPRESA</option>
                                       <?php foreach($projects as $p):?>
                                         <option value="<?php echo $p['id']; ?>" <?php if(isset($_GET["project_id"]) && $_GET["project_id"]==$p['id']){ echo "selected"; } ?>><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -151,13 +151,14 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <th>Asunto</th>
-                        <th>Proyecto</th>
+                        <th>Empresa</th>
                         <th>Tipo</th>
                         <th>Categoria</th>
                         <th>Prioridad</th>
                         <th>Estado</th>
                         <th>Fecha</th>
                         <th>Ultima Actualizacion</th>
+                        <th>Atendido Por</th>
                     </thead>
             <?php
             $total = 0;
@@ -167,14 +168,22 @@
                 $kind_id=$user['kind_id'];
                 $category_id=$user['category_id'];
                 $status_id=$user['status_id'];
+                $atendido_por=$user['atendido_por'];
 
                 $status=mysqli_query($con, "select * from status where id=$status_id");
                 $category=mysqli_query($con, "select * from category where id=$category_id");
                 $kinds = mysqli_query($con,"select * from kind where id=$kind_id");
                 $project  = mysqli_query($con, "select * from project where id=$project_id");
                 $medic = mysqli_query($con,"select * from priority where id=$priority_id");
+                if ($atendido_por != null && !empty($atendido_por)) {
+                    $sql = mysqli_query($con, "select u.name from user u, ticket t where u.id=$atendido_por");
+                    if($c=mysqli_fetch_array($sql)) {
+                        $name_atention=$c['name'];
+                    }
+                } else {
+                    $name_atention = '';
+                }
 
-                
                 ?>
                 <tr>
                 <td><?php echo $user['title'] ?></td>
@@ -194,7 +203,9 @@
                 <td><?php echo $stat['name']; ?></td>
                  <?php } ?>
                 <td><?php echo $user['created_at']; ?></td>
-                <td><?php echo $user['updated_at']; ?></td>
+                <td><?php echo $user['updated_at']; ?></td>                
+                <td><?php echo $name_atention; ?></td>
+  
                 </tr>
              <?php  
                 
