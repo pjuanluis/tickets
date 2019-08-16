@@ -93,9 +93,9 @@
                                     <button class="btn btn-primary btn-block">Procesar</button>
                                 </div>
                                 <div class="col-lg-1">
-                                    <button type="submit" class="btn btn-success btn-block" title="Exportar" id="export">
+                                    <a class="btn btn-success btn-block" title="Exportar" id="exportTable">
                                         <i class="fa fa-file-excel-o"></i>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </form>
@@ -239,21 +239,28 @@
 
 <?php include "footer.php" ?>
 <script>
-$("#export").submit(function(event) {
-  
-    var parametros = $(this).serialize();
-     $.ajax({
-            type: "POST",
-            url: "action/download_reports.php",
-            data: parametros,
-             beforeSend: function(objeto){
-                $("#result_user").html("Mensaje: Cargando...");
-              },
-            success: function(datos){
-
-          }
-    });
-  event.preventDefault();
-})
+$( "#exportTable" ).click(function() {
+    var filename = 'reportes_';
+    var downloadLink;
+    var f = new Date();
+    var fullDate = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById('export_to_excel');
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    filename = filename + fullDate;
+    downloadLink = document.createElement("a");   
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+        downloadLink.download = filename;
+        downloadLink.click();
+    }
+});
 
 </script>
