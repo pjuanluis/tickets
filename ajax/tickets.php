@@ -1,7 +1,7 @@
 <?php
-session_start();    
-$id_kind = $_SESSION['kind'];
-$user_id = $_SESSION['user_id'];
+    session_start();    
+    $id_kind = $_SESSION['kind'];
+    $user_id = $_SESSION['user_id'];
 ?>
 <?php
 
@@ -126,7 +126,6 @@ $user_id = $_SESSION['user_id'];
                         <input type="hidden" value="<?php echo $id;?>" id="id<?php echo $id;?>">
                         <input type="hidden" value="<?php echo $title;?>" id="title<?php echo $id;?>">
                         <input type="hidden" value="<?php echo $description;?>" id="description<?php echo $id;?>">
-
                         <!-- me obtiene los datos -->
                         <input type="hidden" value="<?php echo $kind_id;?>" id="kind_id<?php echo $id;?>">
                         <input type="hidden" value="<?php echo $project_id;?>" id="project_id<?php echo $id;?>">

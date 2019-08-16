@@ -20,7 +20,6 @@
   
     }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +28,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="images/logoti.png" type="image/png" />
+
         <title><?php echo $title." ".$name; ?> </title>
+
 
         <!-- Bootstrap -->
         <link href="css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -65,7 +67,7 @@
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
                           <a href="#" class="navbar-left">
-                            <img src="images/solticss.png" class="img-responsive">
+                            <img src="images/solticss_ti.png" class="img-responsive">
                           </a>
                         </div>
                         <div class="clearfix"></div>

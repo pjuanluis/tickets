@@ -7,6 +7,8 @@
     $priorities = mysqli_query($con,  "select * from priority");
     $statuses = mysqli_query($con, "select * from status");
     $kinds = mysqli_query($con, "select * from kind");
+
+
 ?>  
 
 
@@ -87,8 +89,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <button class="btn btn-primary btn-block">Procesar</button>
+                                </div>
+                                <div class="col-lg-1">
+                                    <button type="submit" class="btn btn-success btn-block" title="Exportar" id="export">
+                                        <i class="fa fa-file-excel-o"></i>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -148,7 +155,7 @@
                             ?>
         <div class="x_content">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="export_to_excel">
                     <thead>
                         <th>Asunto</th>
                         <th>Empresa</th>
@@ -231,3 +238,22 @@
     </div><!-- /page content -->
 
 <?php include "footer.php" ?>
+<script>
+$("#export").submit(function(event) {
+  
+    var parametros = $(this).serialize();
+     $.ajax({
+            type: "POST",
+            url: "action/download_reports.php",
+            data: parametros,
+             beforeSend: function(objeto){
+                $("#result_user").html("Mensaje: Cargando...");
+              },
+            success: function(datos){
+
+          }
+    });
+  event.preventDefault();
+})
+
+</script>

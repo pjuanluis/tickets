@@ -29,8 +29,8 @@
                         <form class="form-horizontal" role="form" id="gastos">
                             <div class="form-group row">
                                 <label for="q" class="col-md-2 control-label">Nombre/Asunto</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="q" placeholder="Nombre del ticket" onkeyup='load(1);'>
+                                <div class="col-md-4">                                   
+                                    <input type="text" class="form-control" id="q" placeholder="Nombre del ticket" onkeyup='load(1);' >                                 
                                 </div>
                                 <div class="col-md-3">
                                     <button type="button" class="btn btn-default" onclick='load(1);' id="btn-tickets">
