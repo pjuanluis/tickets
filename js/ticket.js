@@ -2,7 +2,7 @@ $(document).ready(function(){
 	load(1);
 });
 
-function load(page){
+function load(page) {
 	var q= $("#q").val();
 	$("#loader").fadeIn('slow');
 	$.ajax({
@@ -12,15 +12,18 @@ function load(page){
 		},
 		success:function(data){
 			$(".outer_div").html(data).fadeIn('slow');
-			$('#loader').html(''); 
+			$('#loader').html('');
+
+			var tbody = $("#tickets tbody");
+			if (tbody.children().length == 0) {
+				$('#q').attr('disabled', true);
+			}
+
 		}
 	})
 }
 
-
-
-function eliminar (id)
-{
+function eliminar (id) {
 	var q= $("#q").val();
 	if (confirm("Realmente deseas eliminar el ticket?")){	
 		$.ajax({
@@ -35,5 +38,15 @@ function eliminar (id)
 				load(1);
 			}
 		});
+	}
+}
+
+function cleanSearch() {	
+	var search = $('#q').val();
+
+	if (search !== '' && search !== undefined) {
+		$('#q').val('');
+		$('#q').attr('disabled', false);
+		load(1);
 	}
 }
