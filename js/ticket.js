@@ -14,11 +14,6 @@ function load(page) {
 			$(".outer_div").html(data).fadeIn('slow');
 			$('#loader').html('');
 
-			var tbody = $("#tickets tbody");
-			if (tbody.children().length == 0) {
-				$('#q').attr('disabled', true);
-			}
-
 		}
 	})
 }

@@ -33,8 +33,8 @@
                                     <input type="text" class="form-control" id="q" placeholder="Nombre del ticket" onkeyup='load(1);' >                                 
                                 </div>
                                 <div class="col-md-3">
-                                    <button type="button" class="btn btn-default" onclick='cleanSearch()' id="btn-tickets">
-                                        <span class="fa fa-eraser"></span> Limpiar</button>
+                                    <button type="button" class="btn btn-default" onclick='load(1)' id="btn-tickets">
+                                        <span class="fa fa-search"></span> Buscar</button>
                                     <span id="loader"></span>
                                 </div>
                             </div>

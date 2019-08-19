@@ -80,9 +80,12 @@
             <table class="table table-striped jambo_table bulk_action" id="tickets">
                 <thead>
                     <tr class="headings">
-                        <th class="column-title">Asunto </th>
-                        <th class="column-title">Empresa </th>
-                        <th class="column-title">Prioridad </th>                        
+                        <?php if ($id_kind != 2): ?>  
+                            <th class="column-title">Creado Por </th>
+                        <?php endif; ?>
+                        <th class="column-title">Asunto</th>
+                        <th class="column-title">Empresa</th>
+                        <th class="column-title">Prioridad</th>                        
                         <th>Fecha</th>
                         <th class="column-title">Estado </th>
                         <th class="column-title">Atendido Por</th>						
@@ -100,6 +103,7 @@
                         $priority_id=$r['priority_id'];
                         $status_id=$r['status_id'];
                         $kind_id=$r['kind_id'];
+                        $created_by=$r['user_id'];
                         $category_id=$r['category_id'];
                         $atendido_por=$r['atendido_por'];
 
@@ -117,6 +121,15 @@
                         if($c=mysqli_fetch_array($sql)) {
                             $name_status=$c['name'];
                         }
+
+                        if ($id_kind != 2) {
+                            $sql = mysqli_query($con, "select u.name from user u, ticket t where u.id=$created_by");
+                            if($c=mysqli_fetch_array($sql)) {
+                            $creado_por=$c['name'];
+                            }
+                        }
+
+
 
                         if ($atendido_por != null && !empty($atendido_por)) {
                             $sql = mysqli_query($con, "select u.name from user u, ticket t where u.id=$atendido_por");
@@ -140,6 +153,9 @@
 
 
                         <tr class="even pointer">
+                            <?php if ($id_kind != 2): ?>  
+                                <td><?php echo $creado_por;?></td>
+                            <?php endif; ?>
                             <td><?php echo $title;?></td>
                             <td><?php echo $name_project; ?></td>
                             <td><?php echo $name_priority; ?></td>                        
@@ -176,7 +192,7 @@
                     } //en while
                     ?>
                     <tr>
-                        <td colspan=7><span class="pull-right">
+                        <td colspan=8><span class="pull-right">
                             <?php echo paginate($reload, $page, $total_pages, $adjacents);?>
                         </span></td>
                     </tr>
