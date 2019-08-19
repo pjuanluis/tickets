@@ -50,7 +50,12 @@
                 $sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
             }
             $sWhere = substr_replace( $sWhere, "", -3 );
-            $sWhere .= ')';
+            if ($id_kind != 2) {
+             $sWhere .= ')';
+            } else{
+                $sWhere .= ') AND user_id =' .$user_id;
+            }
+            
         }
         $sWhere.=" order by created_at desc";
         include 'pagination.php'; //include pagination file
