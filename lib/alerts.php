@@ -14,13 +14,13 @@
                 </button> Datos y contraseña actualizados correctamente.
                 </div>";
         }
-        $invalid=sha1(md5("la contrasena no coincide la contraseña con la anterior"));
+        $invalid=sha1(md5("la contrasena no coincide con la anterior"));
         if (isset($_GET['invalid']) && $_GET['invalid']==$invalid) {
             echo "<div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span>
                 </button><strong>Aviso!</strong> La contraseña no coincide con la anterior.
                 </div>";
         }
-        $error=sha1(md5("las nuevas  contraseñas no coinciden"));
+        $error=sha1(md5("las nuevas contrasenas no coinciden"));
         if (isset($_GET['error']) && $_GET['error']==$error) {
             echo "<div class='alert alert-danger alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span>
                 </button><strong>Aviso!</strong> Las nuevas contraseñas no coinciden

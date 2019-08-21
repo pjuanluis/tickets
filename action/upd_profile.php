@@ -22,9 +22,9 @@
 		$update=mysqli_query($con,"UPDATE user set name=\"$name\",email=\"$email\" where id=$id");
 		if ($update) {
 			$success=sha1(md5("datos actualizados"));
-            header("location: ../dashboard.php?success=$success");
 	   	}else{
-	   		// echo "error";
+	   		$error=sha1(md5("Error al actualizar los datos"));
+            header("location: ../dashboard.php?error=$error");
 	   	}
 
 	   	// CHANGE PASSWORD
@@ -34,7 +34,7 @@
 			$new_password = sha1(md5($_POST['new_password']));
 			$confirm_new_password = sha1(md5($_POST['confirm_new_password']));	
 
-			if($_POST['new_password']==$_POST['confirm_new_password']){
+			if($_POST['new_password'] == $_POST['confirm_new_password']){
 
 				$sql = mysqli_query($con,"SELECT * from user where id=$id");
 				while ($row = mysqli_fetch_array($sql)) {
@@ -42,8 +42,8 @@
 				}
 
 				if ($p==$password){ //comprobamos que la contraseña sea igual ala anterior
-
-					$update_passwd=mysqli_query($con,"UPDATE user set password=\"$password\" where id=$id");
+					$query = 
+					$update_passwd=mysqli_query($con,"UPDATE user SET password=\"$new_password\" WHERE id = $id");
 					if ($update_passwd) {
 						$success_pass=sha1(md5("contrasena actualizada"));
             			header("location: ../dashboard.php?success_pass=$success_pass");
@@ -56,6 +56,8 @@
 				$error=sha1(md5("las nuevas contrasenas no coinciden"));
             	header("location: ../dashboard.php?error=$error");
 			}
+		} else {
+			header("location: ../dashboard.php?success=$success");
 		}
 	}else{
 		header("location: ../");
