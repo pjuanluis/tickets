@@ -24,8 +24,9 @@ if (isset($_FILES["file"]))
     {
         $src = $folder.$name;
        @move_uploaded_file($tmp_n, $src);
+       $id = $_POST['user_id'];
 
-       $query=mysqli_query($con, "UPDATE user set profile_pic=\"$name\"");
+       $query=mysqli_query($con, "UPDATE user set profile_pic=\"$name\" WHERE id = $id");
        if($query){
         echo "<div class='alert alert-success' role='alert'>
             <button type='button' class='close' data-dismiss='alert'>&times;</button>

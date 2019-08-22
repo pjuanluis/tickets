@@ -59,6 +59,7 @@
                         <span class="btn btn-my-button btn-file">
                             <form method="post" id="formulario" enctype="multipart/form-data">
                             Cambiar Imagen de perfil: <input type="file" name="file">
+                            <input type="hidden" name="user_id" value="<?php echo $id;?>">
                             </form>
                         </span>
                         <div id="respuesta"></div>
